@@ -402,13 +402,74 @@ footer {
      
 }
 
-.sub{
-   text-align: center;        
-    display: inline-block;     
-    background-color: #ffffff;
-    padding: 8px 16px;       
-    border-radius: 10px;       
-    font-size: 24px;         
-    font-weight: bold;        
-    margin: 20px auto;  
+
+/* === MOBILE - FIX AGGRESIF (tempel di akhir style.css) === */
+
+/* Pastikan konten tampil di atas video */
+.video-bg { z-index: -2; }
+.content    { z-index: 5; }
+
+/* Umum untuk mobile */
+@media (max-width: 768px) {
+  /* Hilangkan video background agar tidak mengganggu layout & performa */
+  .video-bg { display: none !important; }
+
+  /* Header / navbar: susun vertikal, wrap dan center */
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .navi {
+    flex-direction: row;        /* biarkan jadi 1 baris yang bisa wrap */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 10px;
+    width: 100%;
+  }
+  .navi li { margin-left: 0; }
+
+  /* Kurangi padding-top besar yang membuat konten tertekan ke bawah */
+  .content { padding-top: 60px; }
+
+  /* Home */
+  .home { padding: 18px 12px; margin-top: 12px; border-radius: 12px; }
+  .home h1 { font-size: 26px; line-height: 1.1; }
+  .home p  { font-size: 15px; max-width: 100%; }
+
+  /* Grid huruf: lebih rapat di mobile */
+  .alphabet-container { gap: 10px; grid-template-columns: repeat(3, 1fr); padding: 0 10px; }
+
+  .letter-card { padding: 12px; min-height: 90px; display:flex; flex-direction:column; justify-content:center; }
+
+  .letter { font-size: 34px; }
+  .letter-name { font-size: 13px; }
+
+  /* Popup responsif: jangan keluar layar */
+  .popup-content {
+    width: 96%;
+    max-width: 420px;
+    padding: 14px;
+    box-sizing: border-box;
+    max-height: 92vh;
+    overflow: auto;
+  }
+  .popup-letter { font-size: 52px; margin-bottom:6px; }
+
+  /* Media box (GIF/video) agar selalu muat */
+  .media-box { max-width: 320px; max-height: 320px; width: 100%; height: auto; }
+
+  /* Footer kecil */
+  footer { padding: 18px 8px; }
+}
+
+/* Extra kecil (handphone sempit) */
+@media (max-width: 420px) {
+  .alphabet-container { grid-template-columns: repeat(2, 1fr); }
+  .letter { font-size: 30px; }
+  .popup-letter { font-size: 46px; }
+  .home h1 { font-size: 22px; }
+  .navi a { font-size: 15px; padding: 6px 10px; border-radius: 14px; }
+  .content { padding-top: 50px; }
 }
